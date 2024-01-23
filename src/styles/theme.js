@@ -45,6 +45,10 @@ const theme = {
       transform: scaleX(0);
       transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
     `,
+    mobileTxt: `
+    font-size: 16px;
+    line-height: 19px;
+    `,
   },
 };
 

@@ -13,7 +13,7 @@ const Header = () => {
     query: "(min-width:769px)",
   });
 
-  const [dropDownOnOff, setDropDownOnOff] = useState(false);
+  const [dropDownOnOff, setDropDownOnOff] = useState(true);
 
   // useEffect(() => {
   //   console.log(dropDownOnOff);
@@ -51,12 +51,12 @@ const Header = () => {
                     <a href="#">Contact</a>
                   </MenuLi>
                 </MenuUl>
-                <LocalContainer>
-                  <LocalBtn>
+                <LocaleContainer>
+                  <LocaleBtn>
                     <LocaleIcon />
-                  </LocalBtn>
+                  </LocaleBtn>
                   <ToolTip>
-                    <LocalButton
+                    <LocaleButton
                       long={context.state.lang === "KOR"}
                       onClick={() =>
                         context.dispatch({
@@ -66,8 +66,8 @@ const Header = () => {
                       }
                     >
                       KOR
-                    </LocalButton>
-                    <LocalButton
+                    </LocaleButton>
+                    <LocaleButton
                       long={context.state.lang === "ENG"}
                       onClick={() =>
                         context.dispatch({
@@ -77,9 +77,9 @@ const Header = () => {
                       }
                     >
                       ENG
-                    </LocalButton>
+                    </LocaleButton>
                   </ToolTip>
-                </LocalContainer>
+                </LocaleContainer>
               </>
             ) : (
               <>
@@ -100,26 +100,31 @@ const Header = () => {
                       <HMenuEl>About</HMenuEl>
                       <HMenuEl>Contact</HMenuEl>
                       <HMenuEl>
-                        <div
-                          onClick={() =>
-                            context.dispatch({
-                              type: "SET_LOCALE",
-                              lang: "KOR",
-                            })
-                          }
-                        >
-                          KOR
-                        </div>
-                        <div
-                          onClick={() =>
-                            context.dispatch({
-                              type: "SET_LOCALE",
-                              lang: "ENG",
-                            })
-                          }
-                        >
-                          ENG
-                        </div>
+                        <HLocaleContainer>
+                          <HLocaleButton
+                            long={context.state.lang === "KOR"}
+                            onClick={() =>
+                              context.dispatch({
+                                type: "SET_LOCALE",
+                                lang: "KOR",
+                              })
+                            }
+                          >
+                            KOR
+                          </HLocaleButton>
+                          <hr />
+                          <HLocaleButton
+                            long={context.state.lang === "ENG"}
+                            onClick={() =>
+                              context.dispatch({
+                                type: "SET_LOCALE",
+                                lang: "ENG",
+                              })
+                            }
+                          >
+                            ENG
+                          </HLocaleButton>
+                        </HLocaleContainer>
                       </HMenuEl>
                     </HMenuContainer>
                   )}
@@ -265,7 +270,7 @@ const ToolTip = styled.div`
   padding: 14px 0;
   background: ${({ theme }) => theme.colors.white};
 `;
-const LocalButton = styled.div`
+const LocaleButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -281,7 +286,7 @@ const LocalButton = styled.div`
     background: ${({ theme }) => theme.colors.lightGray};
   }
 `;
-const LocalBtn = styled.div`
+const LocaleBtn = styled.div`
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -309,7 +314,7 @@ const LocalBtn = styled.div`
   border-radius: 4px;
   ${({ theme }) => theme.common.flexCenter};
 `;
-const LocalContainer = styled.div`
+const LocaleContainer = styled.div`
   position: relative;
 `;
 const HIconContainer = styled.div`
@@ -335,8 +340,7 @@ const HMenuEl = styled.div`
   width: 100vw;
   ${({ theme }) => theme.common.flexCenter};
   justify-content: space-between;
-  font-size: 16px;
-  line-height: 19px;
+  ${({ theme }) => theme.common.mobileTxt};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 500;
   transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
@@ -352,9 +356,7 @@ const HMenuEl = styled.div`
     ${({ theme }) => theme.common.transition};
     z-index: -1;
   }
-  &:hover {
-    font-weight: 700;
-  }
+
   &:hover:after {
     transform: scaleX(1);
     transform-origin: 0px 0px;
@@ -364,6 +366,19 @@ const HMenuEl = styled.div`
     left: -20px;
   }
 `;
-const HLocalButton = styled.div``;
+const HLocaleContainer = styled.div`
+  display: flex;
+  hr {
+    border-width: 0px thin 0px 0px;
+    border-color: rgba(0, 0, 0, 0.12);
+    margin: 3px 8px;
+    height: 12px;
+    background-color: rgb(111, 117, 123);
+  }
+`;
+const HLocaleButton = styled.div`
+  ${({ theme }) => theme.common.mobileTxt};
+  color: ${(props) => (props.long ? "#fff" : "rgb(111, 117, 123)")};
+`;
 
 export default Header;

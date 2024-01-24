@@ -14,42 +14,31 @@ import Viewer01_en from "../assets/images/pop_img01_en.png";
 import Viewer02_ko from "../assets/images/pop_img02.png";
 import Viewer02_en from "../assets/images/pop_img02_en.png";
 import { Context } from "../Contexts";
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
 
 //{context.state.lang === "KOR"}
 const Optimization = () => {
   const context = useContext(Context);
-  const isPc = useMediaQuery({
-    query: "(max-width:1280px)",
-  });
-  const isTablet = useMediaQuery({
-    query: "(max-width:768px)",
-  });
   const isMobile = useMediaQuery({
     query: "(max-width:600px)",
   });
-  const isBigScreen = useMediaQuery({ query: "(min-width: 1280px)" });
-
-  // useEffect(() => {
-  //   isBigScreen && console.log("isBigScreen");
-  //   isPc && console.log("isPc");
-  //   isTablet && console.log("isTablet");
-  //   isMobile && console.log("isMobile");
-  // }, [isPc, isTablet, isMobile, isBigScreen]);
-
-  // useEffect(() => {
-  //   console.log("지금은 ", context.state.lang);
-  // }, []);
+  const { scrollY, scrollYProgress } = useScroll();
+  const y = useTransform(scrollY, [0, 600], [0, -100]);
 
   return (
     <>
       <Wrapper>
         <Container>
           {!isMobile && (
-            <TitleDiv>
+            <TitleDiv style={{ y }}>
               {/* 신발 이미지 끝부분에서 사용하기로 이동 */}
               <SubTitle>3D model</SubTitle>
-              <MainTitle>최적화</MainTitle>
-              <MainTitle>사용하기</MainTitle>
+              <MainTitle>
+                {context.state.lang === "KOR" ? "최적화" : "Optimization"}
+              </MainTitle>
+              <MainTitle>
+                {context.state.lang === "KOR" ? "사용하기" : "Usage"}
+              </MainTitle>
             </TitleDiv>
           )}
           <ModelSectionContainer>
@@ -57,20 +46,30 @@ const Optimization = () => {
               <ExplanationSection>
                 {isMobile ? (
                   <>
-                    <MainTitle isMobile>3D 모델 최적화</MainTitle>
+                    <MainTitle isMobile>
+                      {context.state.lang === "KOR"
+                        ? "3D 모델 최적화"
+                        : "3D model optimization"}
+                    </MainTitle>
                     <Desc>
-                      3D 모델의 로딩 시간을 최소화하고 용량 제한 없이
+                      {context.state.lang === "KOR"
+                        ? "3D 모델의 로딩 시간을 최소화하고 용량 제한 없이"
+                        : "Minimize the loading time of the 3D model and"}
                       <br />
-                      다양한 플랫폼에서 사용해보세요.
+                      {context.state.lang === "KOR"
+                        ? "다양한 플랫폼에서 사용해보세요."
+                        : "try using it on various platforms without capacity limitation."}
                     </Desc>
                   </>
                 ) : (
                   <Desc>
-                    3D 파일의 품질을 유지한 채 원하는 용량과 폴리곤으로
-                    최적화하여 제공합니다.
+                    {context.state.lang === "KOR"
+                      ? "3D 파일의 품질을 유지한 채 원하는 용량과 폴리곤으로최적화하여 제공합니다."
+                      : "We provide optimized 3D files in the desired capacity and polygons while maintaining the quality of the 3D file."}
                     <br />
-                    로딩 시간을 최소화하고 용량 제한 없이 다양한 플랫폼에 업로드
-                    해보세요.
+                    {context.state.lang === "KOR"
+                      ? "로딩 시간을 최소화하고 용량 제한 없이 다양한 플랫폼에 업로드해보세요."
+                      : "Minimize loading time and try uploading to various platforms without capacity limitation."}
                   </Desc>
                 )}
               </ExplanationSection>
@@ -82,20 +81,33 @@ const Optimization = () => {
               <ExplanationSection>
                 {isMobile ? (
                   <>
-                    <MainTitle isMobile>3D 모델 사용하기</MainTitle>
+                    <MainTitle isMobile>
+                      {context.state.lang === "KOR"
+                        ? "3D 모델 사용하기"
+                        : "Using 3D models"}
+                    </MainTitle>
+
                     <Desc>
-                      리빌더AI의 3D 뷰어를 이용하여, 간편하게
+                      {context.state.lang === "KOR"
+                        ? "리빌더AI의 3D 뷰어를 이용하여, 간편하게"
+                        : "Using RebuilderAI's 3D viewer, you can easily"}
+
                       <br />
-                      색감, 그림자, 빛의 세기를 원하는 대로 조절할 수 있습니다.
+                      {context.state.lang === "KOR"
+                        ? "색감, 그림자, 빛의 세기를 원하는 대로 조절할 수 있습니다."
+                        : "adjust the color, shadow, and intensity of light."}
                     </Desc>
                   </>
                 ) : (
                   <Desc>
-                    리빌더AI의 3D 뷰어를 이용하여, 간편하게 색감, 그림자, 빛의
-                    세기를 원하는 대로 조절할 수 있습니다.
+                    {context.state.lang === "KOR"
+                      ? `리빌더AI의 3D 뷰어를 이용하여, 간편하게 색감, 그림자, 빛의 세기를 원하는 대로 조절할 수 있습니다.`
+                      : "Using RebuilderAI's 3D viewer, you can easily adjust the color, shadow, and intensity of light."}
+
                     <br />
-                    3D 제품에 태그를 추가하여 공유할 수 있으며, 편집한 3D 뷰어는
-                    웹 쇼핑몰에도 사용할 수 있습니다.
+                    {context.state.lang === "KOR"
+                      ? `3D 제품에 태그를 추가하여 공유할 수 있으며, 편집한 3D 뷰어는 웹 쇼핑몰에도 사용할 수 있습니다.`
+                      : "You can add tags to the 3D product and share it You can also use the edited 3D viewer in online shop."}
                   </Desc>
                 )}
               </ExplanationSection>
@@ -133,9 +145,13 @@ const Optimization = () => {
                 </VideoSection>
                 {isMobile && (
                   <Desc>
-                    3D 제품에 태그를 추가하여 공유할 수 있으며
+                    {context.state.lang === "KOR"
+                      ? "3D 제품에 태그를 추가하여 공유할 수 있으며"
+                      : "You can add tags to the 3D product and share it"}
                     <br />
-                    편집한 3D 뷰어는 웹 쇼핑몰에도 사용할 수 있습니다.
+                    {context.state.lang === "KOR"
+                      ? "편집한 3D 뷰어는 웹 쇼핑몰에도 사용할 수 있습니다."
+                      : "You can also use the edited 3D viewer in online shop."}
                   </Desc>
                 )}
                 <VideoSection>
@@ -196,13 +212,14 @@ const Container = styled.div`
     justify-content: center;
   }
 `;
-const TitleDiv = styled.div`
+const TitleDiv = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 12px;
   position: sticky;
   top: 0px;
   height: fit-content;
+  padding: 120px 0px 190px;
   min-width: 200px;
   span {
     line-height: 140%;
@@ -225,11 +242,11 @@ const MainTitle = styled.span`
   margin-bottom: ${(props) => (props.isMobile ? "20px" : 0)};
 
   font-weight: 600;
-  ${({ theme }) => theme.fonts.font48};
+  ${({ theme }) => theme.fonts.font36};
   color: ${({ theme }) => theme.colors.black};
   isMobile @media screen and (max-width: 1280px) {
     // pc
-    ${({ theme }) => theme.fonts.font36};
+    ${({ theme }) => theme.fonts.font34};
   }
   @media screen and (max-width: 768px) {
     // tablet

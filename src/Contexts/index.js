@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useState } from "react";
+import { createStore } from "redux";
 
 const SET_LOCALE = "SET_LOCALE";
 const SET_HEADER = "SET_HEADER";
@@ -12,17 +13,19 @@ const SET_HEADER = "SET_HEADER";
  */
 const initialState = { lang: "KOR", option: "black" };
 
-const Context = createContext({});
+const Context = createContext({ initialState });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOCALE:
       return {
+        ...state,
         lang: action.lang,
       };
 
     case SET_HEADER:
       return {
+        ...state,
         option: action.option,
       };
 
@@ -37,4 +40,6 @@ const Provider = ({ children }) => {
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
-export { Context, Provider };
+let store = createStore(reducer);
+
+export { Context, Provider, store };

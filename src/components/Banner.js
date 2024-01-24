@@ -12,21 +12,12 @@ const Banner = () => {
     query: "(max-width:600px)",
   });
   const { scrollYProgress, scrollY } = useScroll();
-  const translateY = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [500, 0, -1500]
-  );
-  useEffect(() => {
-    scrollY.onChange(() => {
-      console.log(scrollY.get());
-      console.log(scrollYProgress.get());
-    });
-  }, [scrollY, scrollYProgress]);
+  const scale = useTransform(scrollY, [0, 1000], [1, 1.5]);
+  const yRange = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
   return (
     <>
-      <Wrapper>
+      <Wrapper yRange={yRange}>
         <BannerContainer>
           <DescSection>
             <Card>
@@ -51,23 +42,21 @@ const Banner = () => {
             </MoreButtonContainer>
           </DescSection>
         </BannerContainer>
-        <motion.img
-          style={{ translateY }}
-          drag="x"
-          dragSnapToOrigin
-          src={ScrollImage}
-        />
       </Wrapper>
     </>
   );
 };
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   width: 100%;
   height: 400px;
   overflow: hidden;
-  img {
-    max-width: 100%;
-  }
+  position: relative;
+
+  background-image: url("src/assets/images/scroll_img.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  y: ${(props) => props.yRange};
   @media screen and (max-width: 1024px) {
     height: 280px;
   }
@@ -78,11 +67,11 @@ const Wrapper = styled.div`
     height: 140px;
   }
 `;
-const BannerContainer = styled(motion.div)`
+const BannerContainer = styled.div`
   height: 100%;
   width: 100%;
-  position: relative;
   ${({ theme }) => theme.common.flexCenterRow};
+  justify-content: center;
 `;
 const DescSection = styled.div`
   ${({ theme }) => theme.common.ContainerDiv};
@@ -143,7 +132,7 @@ const BannerText = styled.div`
       font-size: 3.7rem;
     }
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
     & span:first-child {
       font-size: 0.8rem;
     }

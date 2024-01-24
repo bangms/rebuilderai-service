@@ -29,16 +29,17 @@ const Optimization = () => {
   });
   const isBigScreen = useMediaQuery({ query: "(min-width: 1280px)" });
 
-  useEffect(() => {
-    isBigScreen && console.log("isBigScreen");
-    isPc && console.log("isPc");
-    isTablet && console.log("isTablet");
-    isMobile && console.log("isMobile");
-  }, [isPc, isTablet, isMobile, isBigScreen]);
+  // useEffect(() => {
+  //   isBigScreen && console.log("isBigScreen");
+  //   isPc && console.log("isPc");
+  //   isTablet && console.log("isTablet");
+  //   isMobile && console.log("isMobile");
+  // }, [isPc, isTablet, isMobile, isBigScreen]);
 
-  useEffect(() => {
-    console.log("지금은 ", context.state.lang);
-  }, []);
+  // useEffect(() => {
+  //   console.log("지금은 ", context.state.lang);
+  // }, []);
+
   return (
     <>
       <Wrapper>

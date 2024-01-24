@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rebuilderai-service/static/css/main.46c39602.css",
-    "main.js": "/rebuilderai-service/static/js/main.a8b4b63e.js",
+    "main.css": "/rebuilderai-service/static/css/main.93590797.css",
+    "main.js": "/rebuilderai-service/static/js/main.240976b5.js",
     "static/js/651.f6af1905.chunk.js": "/rebuilderai-service/static/js/651.f6af1905.chunk.js",
     "static/media/scroll_img.png": "/rebuilderai-service/static/media/scroll_img.c9ebc10e9f846eafcfc7.png",
     "static/media/pop_img01_en.png": "/rebuilderai-service/static/media/pop_img01_en.51f0c9cec20068c437da.png",
@@ -16,7 +16,11 @@
     "static/media/scroll_img_crop.png": "/rebuilderai-service/static/media/scroll_img_crop.d0f7636d64424351b5cc.png",
     "static/media/ic_logo.svg": "/rebuilderai-service/static/media/ic_logo.a3de8b565a14307687f484980df1f751.svg",
     "static/media/ic_banner.svg": "/rebuilderai-service/static/media/ic_banner.f9d498f71139293459b4ad5bfcca933c.svg",
+    "static/media/slick.svg": "/rebuilderai-service/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/rebuilderai-service/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/ic_locale.svg": "/rebuilderai-service/static/media/ic_locale.6b64190d53c7433cbe9a6336df7a6dbc.svg",
+    "static/media/slick.ttf": "/rebuilderai-service/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/rebuilderai-service/static/media/slick.295183786cd8a1389865.woff",
     "static/media/ic_plus.svg": "/rebuilderai-service/static/media/ic_plus.0bc2833cab0f79dbbb8ad6166a5e910d.svg",
     "static/media/ic_play.svg": "/rebuilderai-service/static/media/ic_play.c152f9689dd23d3acfd3ebb589c64da6.svg",
     "static/media/ic_pause.svg": "/rebuilderai-service/static/media/ic_pause.4b0b77aada0441459f28880bf5473a2d.svg",
@@ -25,12 +29,12 @@
     "static/media/ic_arrow.svg": "/rebuilderai-service/static/media/ic_arrow.21d1584888a2261c0fabced2cc99ca5b.svg",
     "static/media/ic_topsvg.svg": "/rebuilderai-service/static/media/ic_topsvg.9fcaee3bd79140d64b7105009f17ef76.svg",
     "static/media/ic_hamburger.svg": "/rebuilderai-service/static/media/ic_hamburger.25635f7c70558ec9eb43903193f54f93.svg",
-    "main.46c39602.css.map": "/rebuilderai-service/static/css/main.46c39602.css.map",
-    "main.a8b4b63e.js.map": "/rebuilderai-service/static/js/main.a8b4b63e.js.map",
+    "main.93590797.css.map": "/rebuilderai-service/static/css/main.93590797.css.map",
+    "main.240976b5.js.map": "/rebuilderai-service/static/js/main.240976b5.js.map",
     "651.f6af1905.chunk.js.map": "/rebuilderai-service/static/js/651.f6af1905.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.46c39602.css",
-    "static/js/main.a8b4b63e.js"
+    "static/css/main.93590797.css",
+    "static/js/main.240976b5.js"
   ]
 }

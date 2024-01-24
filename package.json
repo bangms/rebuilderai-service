@@ -1,6 +1,6 @@
 {
   "name": "rebuilderai-service",
-  "homepage": "https://bangms.github.io/rebuilderai-service",
+  "homepage": "https://bangms.github.io/rebuilderai-service/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

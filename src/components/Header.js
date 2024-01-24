@@ -5,15 +5,19 @@ import LogoIcon from "../assets/images/ic_logo.svg";
 import LocaleIcon from "../assets/images/ic_locale.svg";
 import HamburgerIcon from "../assets/images/ic_hamburger.svg";
 import HamburgerIconOff from "../assets/images/ic_hamburger_off.svg";
+import TopBtn from "../assets/images/ic_topsvg.svg";
 import { Context } from "../Contexts";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 
 const Header = () => {
   const context = useContext(Context);
+  const { scrollY, scrollYProgress } = useScroll();
+  const [dropDownOnOff, setDropDownOnOff] = useState(true);
+  const [svgColor, setSvgColor] = useState("#fff");
+  const [scrolling, setScrolling] = useState(false);
   const isPc = useMediaQuery({
     query: "(min-width:769px)",
   });
-  const { scrollY, scrollYProgress } = useScroll();
   const positionValue = useTransform(
     scrollY,
     [0, 600, 601],
@@ -36,19 +40,23 @@ const Header = () => {
     ["#fff", "#fff", "#000"]
   );
 
-  const [dropDownOnOff, setDropDownOnOff] = useState(true);
-  const [svgColor, setSvgColor] = useState("#fff");
-
-  useEffect(() => {
-    function handleScroll() {
-      console.log("Page scroll: ", scrollY.get());
-      if (scrollY.get() > 375) {
-        setSvgColor("#000");
-      } else {
-        setSvgColor("#fff");
-      }
+  const handleScroll = () => {
+    const scrollYValue = scrollY.get();
+    if (scrollYValue > 375) {
+      setSvgColor("#000");
+    } else {
+      setSvgColor("#fff");
     }
 
+    // 스크롤 위치에 따라 버튼 보이기/숨기기 처리
+    if (scrollYValue > window.innerHeight / 2) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  useEffect(() => {
     // 스크롤 이벤트 리스너 등록
     window.addEventListener("scroll", handleScroll);
 
@@ -58,9 +66,17 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(svgColor);
-  }, [svgColor]);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // 페이지 상단으로 스크롤
+  };
+  const scrollToTopVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
+  };
+  const isMobile = useMediaQuery({
+    query: "(max-width:600px)",
+  });
+
   return (
     <>
       <Wrapper
@@ -213,6 +229,16 @@ const Header = () => {
           </BtnList>
         </MenuContainer>
       </Wrapper>
+      {scrolling && isMobile && (
+        <ScrollToTopButton
+          variants={scrollToTopVariants}
+          initial="hidden"
+          animate="visible"
+          onClick={scrollToTop}
+        >
+          <TopBtn />
+        </ScrollToTopButton>
+      )}
     </>
   );
 };
@@ -460,5 +486,20 @@ const HLocaleButton = styled.div`
   z-index: 10;
   color: ${(props) => !props.lang && "#6F757B"};
 `;
-
+const ScrollToTopButton = styled(motion.button)`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(230, 232, 235);
+  border-radius: 50%;
+  cursor: pointer;
+  filter: drop-shadow(rgba(0, 0, 0, 0.12) 0px 4px 12px);
+  z-index: 1200;
+`;
 export default Header;

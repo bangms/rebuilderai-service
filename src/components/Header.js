@@ -15,49 +15,50 @@ const Header = () => {
 
   const [dropDownOnOff, setDropDownOnOff] = useState(true);
 
-  // useEffect(() => {
-  //   console.log(dropDownOnOff);
-  // }, [dropDownOnOff]);
-
+  useEffect(() => {
+    console.log("지금은 ", context.state.option);
+  }, [context.state.option]);
   return (
     <>
-      <Wrapper>
+      <Wrapper option={context.state.option}>
         <MenuContainer>
           <BtnList>
             <LogoBtn href="https://rebuilderai.com" aria-label="Go to HomePage">
-              <LogoIcon fill="#fff" />
+              <LogoIcon
+                fill={context.state.option === "white" ? "#000" : "#fff"}
+              />
             </LogoBtn>
             {isPc ? (
               <>
                 <MenuUl>
-                  <MenuLi>
+                  <MenuLi option={context.state.option}>
                     <a href="#">Service</a>
                   </MenuLi>
-                  <MenuLi>
+                  <MenuLi option={context.state.option}>
                     <a href="#">Technology</a>
-                    <SubMenuUl>
-                      <SubMenuLi class="sc-cmaqmh bLBBOs">광원추론</SubMenuLi>
-                      <SubMenuLi class="sc-cmaqmh bLBBOs">재질추론</SubMenuLi>
-                      <SubMenuLi class="sc-cmaqmh bLBBOs">실측크기</SubMenuLi>
-                      <SubMenuLi class="sc-cmaqmh bLBBOs">
-                        3D 공간 영상
-                      </SubMenuLi>
+                    <SubMenuUl option={context.state.option}>
+                      <SubMenuLi>광원추론</SubMenuLi>
+                      <SubMenuLi>재질추론</SubMenuLi>
+                      <SubMenuLi>실측크기</SubMenuLi>
+                      <SubMenuLi>3D 공간 영상</SubMenuLi>
                     </SubMenuUl>
                   </MenuLi>
-                  <MenuLi>
+                  <MenuLi option={context.state.option}>
                     <a href="#">About</a>
                   </MenuLi>
-                  <MenuLi>
+                  <MenuLi option={context.state.option}>
                     <a href="#">Contact</a>
                   </MenuLi>
                 </MenuUl>
                 <LocaleContainer>
                   <LocaleBtn>
-                    <LocaleIcon />
+                    <LocaleIcon
+                      fill={context.state.option === "white" ? "#000" : "#fff"}
+                    />
                   </LocaleBtn>
                   <ToolTip>
                     <LocaleButton
-                      long={context.state.lang === "KOR"}
+                      lang={context.state.lang === "KOR"}
                       onClick={() =>
                         context.dispatch({
                           type: "SET_LOCALE",
@@ -68,7 +69,7 @@ const Header = () => {
                       KOR
                     </LocaleButton>
                     <LocaleButton
-                      long={context.state.lang === "ENG"}
+                      lang={context.state.lang === "ENG"}
                       onClick={() =>
                         context.dispatch({
                           type: "SET_LOCALE",
@@ -84,25 +85,38 @@ const Header = () => {
             ) : (
               <>
                 <HIconContainer
+                  option={context.state.option}
                   onClick={() => {
                     setDropDownOnOff(!dropDownOnOff);
                   }}
                 >
                   {dropDownOnOff ? (
-                    <HamburgerIconOff fill="#fff" />
+                    <HamburgerIconOff
+                      fill={context.state.option === "white" ? "#000" : "#fff"}
+                    />
                   ) : (
-                    <HamburgerIcon fill="#fff" />
+                    <HamburgerIcon
+                      fill={context.state.option === "white" ? "#000" : "#fff"}
+                    />
                   )}
                   {dropDownOnOff && (
-                    <HMenuContainer>
-                      <HMenuEl>Service</HMenuEl>
-                      <HMenuEl>Technology</HMenuEl>
-                      <HMenuEl>About</HMenuEl>
-                      <HMenuEl>Contact</HMenuEl>
-                      <HMenuEl>
+                    <HMenuContainer option={context.state.option}>
+                      <HMenuEl option={context.state.option}>
+                        <span>Service</span>Service
+                      </HMenuEl>
+                      <HMenuEl option={context.state.option}>
+                        <span>Technology</span>
+                      </HMenuEl>
+                      <HMenuEl option={context.state.option}>
+                        <span>About</span>
+                      </HMenuEl>
+                      <HMenuEl option={context.state.option}>
+                        <span>Contact</span>
+                      </HMenuEl>
+                      <HMenuEl option={context.state.option}>
                         <HLocaleContainer>
                           <HLocaleButton
-                            long={context.state.lang === "KOR"}
+                            lang={context.state.lang === "KOR"}
                             onClick={() =>
                               context.dispatch({
                                 type: "SET_LOCALE",
@@ -114,7 +128,8 @@ const Header = () => {
                           </HLocaleButton>
                           <hr />
                           <HLocaleButton
-                            long={context.state.lang === "ENG"}
+                            option={context.state.option}
+                            lang={context.state.lang === "KOR"}
                             onClick={() =>
                               context.dispatch({
                                 type: "SET_LOCALE",
@@ -141,31 +156,23 @@ const Header = () => {
 const Wrapper = styled.div`
   width: 100%;
   height: 94px;
-  background: ${({ theme }) => theme.colors.black};
+  ${(props) => (props.lang ? "#fff" : "rgb(111, 117, 123)")};
+  background: ${(props) =>
+    props.option === "black"
+      ? ({ theme }) => theme.colors.black
+      : ({ theme }) => theme.colors.white};
+
   z-index: 9999;
   ${({ theme }) => theme.common.flexCenter};
-  ${({ theme }) => theme.common.fixedTop};
-
+  ${(props) =>
+    props.option !== "hide" && (({ theme }) => theme.common.fixedTop)};
   transition: all 0.2s ease-in-out 0s;
   @media screen and (max-width: 768px) {
     height: 64px;
   }
 `;
 const MenuContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0 30px;
-  position: relative;
-
-  @media screen and (min-width: 1200px) {
-    max-width: 1200px;
-  }
-  @media screen and (max-width: 768px) {
-    padding: 0 60px;
-  }
-  @media screen and (max-width: 600px) {
-    padding: 0 20px;
-  }
+  ${({ theme }) => theme.common.ContainerDiv};
 `;
 const BtnList = styled.div`
   height: 100%;
@@ -179,16 +186,23 @@ const LogoBtn = styled.a`
 `;
 const SubMenuUl = styled.ul`
   position: absolute;
-  /* top: 114px; */
-  height: 114px;
+  width: 100%;
   left: 50%;
+  top: 60px;
+  background: ${(props) =>
+    props.option === "black"
+      ? ({ theme }) => theme.colors.black
+      : ({ theme }) => theme.colors.white};
+  height: 114px;
   transform: translateX(-50%);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 9998;
   gap: 40px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${(props) =>
+    props.option === "black"
+      ? ({ theme }) => theme.colors.white
+      : ({ theme }) => theme.colors.black};
 
   &:hover {
     display: flex;
@@ -207,7 +221,10 @@ const MenuLi = styled.li`
   a {
     position: relative;
     display: block;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${(props) =>
+      props.option === "black"
+        ? ({ theme }) => theme.colors.white
+        : ({ theme }) => theme.colors.black};
     text-decoration: none;
     transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
     font-size: 2rem;
@@ -258,7 +275,7 @@ const ToolTip = styled.div`
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transform-origin: center top;
-  margin-top: 14px;
+  margin-top: 4px;
   min-width: 80px;
   background: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 12px;
@@ -269,6 +286,9 @@ const ToolTip = styled.div`
   gap: 12px;
   padding: 14px 0;
   background: ${({ theme }) => theme.colors.white};
+  &:hover {
+    opacity: 1;
+  }
 `;
 const LocaleButton = styled.div`
   display: flex;
@@ -281,7 +301,7 @@ const LocaleButton = styled.div`
   font-size: 1.7rem;
   line-height: 20px;
   cursor: pointer;
-  color: ${(props) => (props.long ? "#000" : "rgb(111, 117, 123)")};
+  color: ${(props) => (props.lang ? "#000" : "rgb(111, 117, 123)")};
   &:hover {
     background: ${({ theme }) => theme.colors.lightGray};
   }
@@ -315,6 +335,7 @@ const LocaleBtn = styled.div`
   ${({ theme }) => theme.common.flexCenter};
 `;
 const LocaleContainer = styled.div`
+  z-index: 1500;
   position: relative;
 `;
 const HIconContainer = styled.div`
@@ -331,21 +352,32 @@ const HMenuContainer = styled.div`
   ${({ theme }) => theme.common.flexCenterColumn};
   align-items: flex-start;
   gap: 32px;
-  padding: 32px 60px 0;
+  padding: 32px 60px;
+  background: ${(props) =>
+    props.option === "black"
+      ? ({ theme }) => theme.colors.black
+      : ({ theme }) => theme.colors.white};
   @media screen and (max-width: 600px) {
-    padding: 32px 20px 0;
+    padding: 32px 20px;
   }
 `;
 const HMenuEl = styled.div`
   width: 100vw;
   ${({ theme }) => theme.common.flexCenter};
   justify-content: space-between;
-  ${({ theme }) => theme.common.mobileTxt};
-  color: ${({ theme }) => theme.colors.white};
-  font-weight: 500;
   transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0s;
+  & span {
+    z-index: 2;
+    ${({ theme }) => theme.common.mobileTxt};
+    color: ${(props) =>
+      props.option === "black"
+        ? ({ theme }) => theme.colors.white
+        : ({ theme }) => theme.colors.black};
+    font-weight: 500;
+  }
   &:after {
-    background: rgb(20, 20, 20);
+    background: ${(props) =>
+      props.option === "black" ? "rgb(20, 20, 20)" : "rgb(246, 247, 248)"};
     display: block;
     content: "";
     position: absolute;
@@ -354,7 +386,6 @@ const HMenuEl = styled.div`
     height: 51px;
     transform-origin: 0px 0px;
     ${({ theme }) => theme.common.transition};
-    z-index: -1;
   }
 
   &:hover:after {
@@ -374,11 +405,19 @@ const HLocaleContainer = styled.div`
     margin: 3px 8px;
     height: 12px;
     background-color: rgb(111, 117, 123);
+    z-index: 10;
   }
 `;
 const HLocaleButton = styled.div`
   ${({ theme }) => theme.common.mobileTxt};
-  color: ${(props) => (props.long ? "#fff" : "rgb(111, 117, 123)")};
+  font-weight: 600;
+  z-index: 10;
+  color: ${(props) =>
+    props.lang
+      ? props.option === "black"
+        ? ({ theme }) => theme.colors.white
+        : ({ theme }) => theme.colors.black
+      : ({ theme }) => theme.colors.gray};
 `;
 
 export default Header;

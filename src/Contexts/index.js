@@ -1,9 +1,16 @@
 import React, { createContext, useReducer, useState } from "react";
 
 const SET_LOCALE = "SET_LOCALE";
-const SET_TITLE = "SET_TITLE";
+const SET_HEADER = "SET_HEADER";
 
-const initialState = { lang: "ENG", title: "" };
+/**
+ * SET_LOCALE
+ * lang - "ENG" , "KOR"
+ *
+ * SET_HEADER
+ * option - "black", "white", "hide"
+ */
+const initialState = { lang: "KOR", option: "black" };
 
 const Context = createContext({});
 
@@ -14,9 +21,9 @@ const reducer = (state = initialState, action) => {
         lang: action.lang,
       };
 
-    case SET_TITLE:
+    case SET_HEADER:
       return {
-        title: action.title,
+        option: action.option,
       };
 
     default:

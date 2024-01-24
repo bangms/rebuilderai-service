@@ -99,7 +99,7 @@ video {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   font-size: 62.5%;
-  white-space: nowrap;
+  white-space: pre-wrap;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -140,7 +140,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 `;
 
 export default GlobalStyle;

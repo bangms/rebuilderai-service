@@ -6,7 +6,6 @@ import React, {
   useContext,
 } from "react";
 import { styled } from "styled-components";
-import Slide from "./Slider";
 // import serviceData from "../assets/data/service_list";
 import serviceData from "../assets/data/service_list.json";
 import { Context } from "../Contexts";

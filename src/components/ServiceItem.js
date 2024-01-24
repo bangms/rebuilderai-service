@@ -89,7 +89,7 @@ const ItemContainer = styled.div`
   grid-template-columns: 1fr 1.5fr;
   gap: 40px;
   padding-top: 200px;
-  overflow: hidden;
+  /* overflow: hidden; */
   @media screen and (max-width: 1280px) {
     display: block;
   }
@@ -164,7 +164,7 @@ const AssetsContainer = styled.div`
   width: 100%;
   height: 100%;
   text-align: end;
-  overflow: hidden;
+  /* overflow: hidden; */
   span {
     font-weight: 500;
     font-size: 1.5rem;

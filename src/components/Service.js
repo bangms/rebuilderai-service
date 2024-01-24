@@ -15,10 +15,6 @@ import ServiceItem from "./ServiceItem";
 const Service = () => {
   const context = useContext(Context);
 
-  useEffect(() => {
-    console.log("언어 설정 : ", context.state.lang);
-  }, [context.state.lang]);
-
   return (
     <>
       <Wrapper>

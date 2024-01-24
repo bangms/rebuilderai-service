@@ -246,7 +246,7 @@ const LogoBtn = styled.a`
   ${({ theme }) => theme.common.flexCenter};
 `;
 const SubMenuUl = styled(motion.ul)`
-  position: absolute;
+  position: fixed;
   width: 100%;
   left: 50%;
   top: 60px;

@@ -322,11 +322,13 @@ const ModalImage = styled.div`
 const VideoSection = styled.div`
   ${({ theme }) => theme.common.flexCenterColumn};
   overflow: hidden;
-  &:first-child {
-    margin-bottom: 40px;
-  }
-  &:last-child {
-    margin-top: 40px;
+  @media screen and (max-width: 600px) {
+    &:first-child {
+      margin-bottom: 40px;
+    }
+    &:last-child {
+      margin-top: 40px;
+    }
   }
 `;
 const Video = styled.div`

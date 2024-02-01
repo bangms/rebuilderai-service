@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://bangms.github.io/rebuilderai-service/static/css/main.4fcdfe3f.css",
-    "main.js": "https://bangms.github.io/rebuilderai-service/static/js/main.197fa35a.js",
+    "main.js": "https://bangms.github.io/rebuilderai-service/static/js/main.6caff162.js",
     "static/js/651.f6af1905.chunk.js": "https://bangms.github.io/rebuilderai-service/static/js/651.f6af1905.chunk.js",
     "static/media/scroll_img.png": "https://bangms.github.io/rebuilderai-service/static/media/scroll_img.c9ebc10e9f846eafcfc7.png",
     "static/media/pop_img01_en.png": "https://bangms.github.io/rebuilderai-service/static/media/pop_img01_en.51f0c9cec20068c437da.png",
@@ -30,11 +30,11 @@
     "static/media/ic_topsvg.svg": "https://bangms.github.io/rebuilderai-service/static/media/ic_topsvg.9fcaee3bd79140d64b7105009f17ef76.svg",
     "static/media/ic_hamburger.svg": "https://bangms.github.io/rebuilderai-service/static/media/ic_hamburger.25635f7c70558ec9eb43903193f54f93.svg",
     "main.4fcdfe3f.css.map": "https://bangms.github.io/rebuilderai-service/static/css/main.4fcdfe3f.css.map",
-    "main.197fa35a.js.map": "https://bangms.github.io/rebuilderai-service/static/js/main.197fa35a.js.map",
+    "main.6caff162.js.map": "https://bangms.github.io/rebuilderai-service/static/js/main.6caff162.js.map",
     "651.f6af1905.chunk.js.map": "https://bangms.github.io/rebuilderai-service/static/js/651.f6af1905.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4fcdfe3f.css",
-    "static/js/main.197fa35a.js"
+    "static/js/main.6caff162.js"
   ]
 }

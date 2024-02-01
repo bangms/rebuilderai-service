@@ -1,11 +1,18 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import LogoIcon from "../assets/images/ic_logo.svg";
-import LocaleIcon from "../assets/images/ic_locale.svg";
-import HamburgerIcon from "../assets/images/ic_hamburger.svg";
-import HamburgerIconOff from "../assets/images/ic_hamburger_off.svg";
-import TopBtn from "../assets/images/ic_topsvg.svg";
+import {
+  LogoIcon,
+  LocaleIcon,
+  HamburgerIcon,
+  HamburgerIconOff,
+  TopBtn,
+} from "../assets/images/import";
+// import LogoIcon from "../assets/images/ic_logo.svg";
+// import LocaleIcon from "../assets/images/ic_locale.svg";
+// import HamburgerIcon from "../assets/images/ic_hamburger.svg";
+// import HamburgerIconOff from "../assets/images/ic_hamburger_off.svg";
+// import TopBtn from "../assets/images/ic_topsvg.svg";
 import { Context } from "../Contexts";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 
@@ -85,7 +92,7 @@ const Header = () => {
       >
         <MenuContainer>
           <BtnList>
-            <LogoBtn href="https://rebuilderai.com" aria-label="Go to HomePage">
+            <LogoBtn href="#">
               {/* <LogoIcon style={{ fill: colorValue }} /> */}
               <LogoIcon fill={svgColor} />
             </LogoBtn>

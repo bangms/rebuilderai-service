@@ -36,6 +36,9 @@ const Container = styled.div`
   ${({ theme }) => theme.common.ContainerDiv};
   padding-bottom: 325px;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 200px;
+  }
 `;
 
 export default Service;

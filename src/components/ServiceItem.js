@@ -7,8 +7,9 @@ import React, {
 } from "react";
 import { styled } from "styled-components";
 import { Context } from "../Contexts";
-import PauseIcon from "../assets/images/ic_pause.svg";
-import PlayIcon from "../assets/images/ic_play.svg";
+import { PauseIcon, PlayIcon } from "../assets/images/import";
+// import PauseIcon from "../assets/images/ic_pause.svg";
+// import PlayIcon from "../assets/images/ic_play.svg";
 import { useTransform } from "framer-motion";
 import Slider from "./Slider";
 
@@ -18,6 +19,15 @@ const ServiceItem = ({ r, i }) => {
   const [videoControls, setVideoControls] = useState(Array(4).fill(false));
   // 각 동영상 엘리먼트의 ref 배열
   const videoRefs = useRef(Array(4).fill(null));
+
+  useEffect(() => {
+    if (i !== 0) {
+      const videoElement = videoRefs.current[i];
+      if (videoElement && !videoElement.playing) {
+        videoElement.play();
+      }
+    }
+  }, [i]);
 
   const videoHandler = (index) => {
     const videoElement = videoRefs.current[index];
@@ -55,13 +65,14 @@ const ServiceItem = ({ r, i }) => {
               autoPlay={true}
               playsInline={true}
               ref={(el) => (videoRefs.current[i] = el)}
+              muted={true}
             >
               <source src={r.video} type="video/mp4" />
             </video>
           )}
           {i !== 0 && (
             <VideoControl onClick={() => videoHandler(i)}>
-              {/* PauseIcon PlayIcon */}
+              {/* videoControls[i]가 false이면, 즉 비디오가 재생 중이면 PauseIcon을 보여줍니다. */}
               {videoControls[i] ? <PlayIcon /> : <PauseIcon />}
             </VideoControl>
           )}
@@ -105,8 +116,12 @@ const TitleTextContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  white-space: pre-wrap;
   @media screen and (max-width: 1280px) {
     align-items: center;
+  }
+  @media screen and (max-width: 600px) {
+    min-width: auto;
   }
 `;
 const TitleDesc = styled.div`
@@ -199,9 +214,9 @@ const AssetsContainer = styled.div`
     margin-top: 28px;
     span {
       font-size: 0.8rem;
-      max-width: 215px;
+      max-width: 100%;
       white-space: pre-wrap;
-      bottom: -18px;
+      bottom: -24px;
     }
   }
 `;

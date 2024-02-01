@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { styled } from "styled-components";
-import ScrollImage from "../assets/images/scroll_img.png";
-import CropImage from "../assets/images/scroll_img_crop.png";
-import ArrowIcon from "../assets/images/ic_arrow.svg";
-import BannerIcon from "../assets/images/ic_banner.svg";
+// import ScrollImage from "../assets/images/scroll_img.png";
+// import CropImage from "../assets/images/scroll_img_crop.png";
+import {
+  ArrowIcon,
+  BannerIcon,
+  ScrollImage,
+  CropImage,
+} from "../assets/images/import";
 import { useMediaQuery } from "react-responsive";
 
 const Banner = () => {
@@ -52,7 +56,7 @@ const Wrapper = styled(motion.div)`
   overflow: hidden;
   position: relative;
 
-  background-image: url("src/assets/images/scroll_img.png");
+  background-image: url(${ScrollImage});
   background-size: cover;
   background-attachment: fixed;
   background-position: center;

@@ -94,10 +94,7 @@ const MainVideo = () => {
               filter: blurValue,
             }}
           >
-            <source
-              src={"../../public/videos/main_video.mp4"}
-              type="video/mp4"
-            />
+            <source src={"videos/main_video.mp4"} type="video/mp4" />
           </motion.video>
         </VideoContainer>
         <TextContainer style={{ position: positionValue }}>

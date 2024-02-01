@@ -21,8 +21,10 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "images/[hash][ext][query]",
-    publicPath: process.env.PUBLIC_URL,
+    publicPath: "/rebuilderai-service/",
+    // assetModuleFilename: "images/[hash][ext][query]",
+    // publicPath: process.env.PUBLIC_URL,
+    // publicPath: "/",
   },
   module: {
     rules: [
@@ -37,6 +39,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
+        issuer: /\.[jt]sx?$/,
         use: ["@svgr/webpack"],
       },
       {
@@ -52,8 +55,9 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: publicDir + "/videos/[name].[ext]",
-              outputPath: "video",
+              name: "videos/[name].[ext]",
+              // name: "assets/videos/[name].[ext]",
+              // outputPath: "videos",
             },
           },
         ],
@@ -71,7 +75,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: "./",
+    static: path.resolve(__dirname, "dist"),
     port: 3000,
   },
 };

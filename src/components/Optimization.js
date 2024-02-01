@@ -7,7 +7,8 @@ import React, {
 } from "react";
 import { styled } from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import PlusIcon from "../assets/images/ic_plus.svg";
+import { PlusIcon } from "../assets/images/import";
+// import PlusIcon from "../assets/images/ic_plus.svg";
 import ShoesImg from "../assets/images/model01.png";
 import Viewer01_ko from "../assets/images/pop_img01.png";
 import Viewer01_en from "../assets/images/pop_img01_en.png";
@@ -118,7 +119,7 @@ const Optimization = () => {
                       <>
                         <video loop={true} autoPlay={true} playsInline={true}>
                           <source
-                            src={"../../public/videos/service_video_pc_ko.mp4"}
+                            src={"videos/service_video_pc_ko.mp4"}
                             type="video/mp4"
                           />
                         </video>
@@ -130,7 +131,7 @@ const Optimization = () => {
                       <>
                         <video loop={true} autoPlay={true} playsInline={true}>
                           <source
-                            src={"../../public/videos/service_video_pc_en.mp4"}
+                            src={"videos/service_video_pc_en.mp4"}
                             type="video/mp4"
                           />
                         </video>
@@ -160,7 +161,7 @@ const Optimization = () => {
                       <>
                         <video loop={true} autoPlay={true} playsInline={true}>
                           <source
-                            src={"../../public/videos/service_video2_pc_ko.mp4"}
+                            src={"videos/service_video2_pc_ko.mp4"}
                             type="video/mp4"
                           />
                         </video>
@@ -172,7 +173,7 @@ const Optimization = () => {
                       <>
                         <video loop={true} autoPlay={true} playsInline={true}>
                           <source
-                            src={"../../public/videos/service_video2_pc_en.mp4"}
+                            src={"videos/service_video2_pc_en.mp4"}
                             type="video/mp4"
                           />
                         </video>

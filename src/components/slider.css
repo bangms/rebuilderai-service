@@ -1,0 +1,52 @@
+/* 기본 모바일 레이아웃 */
+.image-container {
+  display: none;
+}
+
+.slider-container {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  /* 태블릿 및 데스크톱에서 보여줄 스타일 */
+  .slider-container {
+    display: block;
+  }
+
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .image-container .image-item {
+    display: none; /* 모바일에서는 보이지 않게 */
+  }
+
+  .slider-container .slider-item img,
+  .image-container .image-item img {
+    width: 100%;
+    max-width: 300px; /* 이미지 최대 너비 조정 */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  /* 모바일에서 보여줄 스타일 */
+  .image-container {
+    display: block;
+  }
+
+  .image-container .image-item {
+    display: block; /* 모바일에서는 이미지를 보여줌 */
+  }
+
+  .image-container .image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px; /* 이미지 사이의 간격 */
+  }
+}

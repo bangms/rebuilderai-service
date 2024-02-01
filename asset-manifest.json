@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rebuilderai-service/static/css/main.93590797.css",
-    "main.js": "/rebuilderai-service/static/js/main.8fb9fe04.js",
+    "main.js": "/rebuilderai-service/static/js/main.1a7ab7f9.js",
     "static/js/651.f6af1905.chunk.js": "/rebuilderai-service/static/js/651.f6af1905.chunk.js",
     "static/media/scroll_img.png": "/rebuilderai-service/static/media/scroll_img.c9ebc10e9f846eafcfc7.png",
     "static/media/pop_img01_en.png": "/rebuilderai-service/static/media/pop_img01_en.51f0c9cec20068c437da.png",
@@ -30,11 +30,11 @@
     "static/media/ic_topsvg.svg": "/rebuilderai-service/static/media/ic_topsvg.9fcaee3bd79140d64b7105009f17ef76.svg",
     "static/media/ic_hamburger.svg": "/rebuilderai-service/static/media/ic_hamburger.25635f7c70558ec9eb43903193f54f93.svg",
     "main.93590797.css.map": "/rebuilderai-service/static/css/main.93590797.css.map",
-    "main.8fb9fe04.js.map": "/rebuilderai-service/static/js/main.8fb9fe04.js.map",
+    "main.1a7ab7f9.js.map": "/rebuilderai-service/static/js/main.1a7ab7f9.js.map",
     "651.f6af1905.chunk.js.map": "/rebuilderai-service/static/js/651.f6af1905.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.93590797.css",
-    "static/js/main.8fb9fe04.js"
+    "static/js/main.1a7ab7f9.js"
   ]
 }

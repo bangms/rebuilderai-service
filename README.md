@@ -4,7 +4,8 @@
 ### 📅 개발 기간
 
 - 2024-01-22 ~ 2024-01-24
-- 참고 사이트 : https://rebuilderai.com/service  
+- 참고 사이트 : https://rebuilderai.com/service
+- 구현 사이트 : https://bangms.github.io/rebuilderai-service/
 ###
 #
 ### 📌 Skill
